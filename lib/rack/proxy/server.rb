@@ -12,7 +12,8 @@ module Rack::Proxy
       uri = URI(request.url)
       
       uri.scheme, uri.userinfo, uri.host, uri.port = @host.scheme, @host.userinfo, @host.host, @host.port
-
+      uri.path = env['PATH_INFO']
+      
       forward_request = Net::HTTP.const_get(request_method(request)).new(uri.request_uri)
       if forward_request.request_body_permitted? and request.body
         forward_request.body_stream = request.body
