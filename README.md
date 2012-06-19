@@ -1,6 +1,6 @@
 # Rackproxy
 
-TODO: Write a gem description
+A Rack App compatible HTTP Proxy
 
 ## Installation
 
@@ -18,7 +18,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+# config.ru
+require 'rackproxy'
+
+run Rack::Proxy.new('https://github.com')
+```
+
+    $ rackup config.ru
 
 ## Contributing
 
