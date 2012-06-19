@@ -1,4 +1,4 @@
-# Rackproxy
+# Rack::Proxy
 
 A Rack App compatible HTTP Proxy
 
