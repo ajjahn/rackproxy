@@ -21,7 +21,11 @@ module Rack::Proxy
         forward_request.content_type = request.content_type
       end
 
-      forward_request["Referer"] = request.referer
+      env.each do |k, v|
+        if k =~ /^HTTP_(.*)$/
+          forward_request[$1] = v
+        end
+      end
 
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = uri.scheme == 'https' ? true : false
